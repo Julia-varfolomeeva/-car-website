@@ -1,0 +1,601 @@
+body, html{
+    height: 100%;
+}
+.home-header{
+    background-color:$deep;
+    height: 100%;
+    color: #fff;
+    padding-top: $size; //отступ сверху
+    @include media-breakpoint-down(md){
+        padding-top: $size-sm;
+    }
+    
+}
+.top-line{
+    position: absolute;
+    width: 100%;
+    height: $size;
+    top:0;
+    border-bottom: 1px solid rgba(#fff, $border-opacity);
+    z-index: 10;
+    background-color: $deep;
+    display: flex;
+    align-items: center;
+    @include media-breakpoint-down(md){
+        height: $size-sm;
+    }
+
+}
+.logo{
+    flex: 0 0 200px;
+    display: flex;
+    align-items: center;
+    color:#fff;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: .5em;
+    &:hover, &:focus{
+        color: #fff;
+
+    }
+    @include media-breakpoint-down(md) {
+        flex: 1 0 0 ;// чтобы скрыть на маленьких разрешениях
+    }
+
+}
+
+.menu-button-container{
+    flex: 0 0 200px;
+    text-align: right;
+    position: relative;
+    height: $size;
+    @include media-breakpoint-down(md){
+        height: $size-sm;
+      
+    }
+    @include media-breakpoint-down(lg){
+        
+        flex: 1 0 0;
+    }
+    
+
+}
+.top-line__decoration{
+    flex: 1 0 0;
+    text-align: center;
+    &:before{
+        content: '';
+        height: 1px;
+        width: 50px;
+        background-color: #fff;
+        display: inline-block;
+        opacity: $border-opacity*1.5;
+        position: relative;
+        top: -5px;
+    }
+    @include media-breakpoint-down(md){
+        display: none;//скрываем на маленьких разрешениях
+    }
+    
+}
+.logo__img-wrapper{
+    width: $size;
+    height: $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include media-breakpoint-down(md){
+        width: $size-sm;
+       height: $size-sm;
+    }
+
+}
+.logo__text{
+
+ @include media-breakpoint-down(md){
+    display: none;//скрываем на маленьких разрешениях
+ }
+}
+@include media-breakpoint-down(md) {
+    .top-line__separator, .top-line__address{
+        display: none;//скрываем на маленьких разрешениях два блока
+    }
+}
+.menu-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $size;
+    height: $size;
+    background-color: #3c3c3c;
+    text-decoration: none;
+    background-image: url(../images/dist/bars-solid.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background .25 ease-out;
+    &:hover{
+        background-color: $accent;
+    }
+    @include media-breakpoint-down(md){
+        height: $size-sm;
+        width: $size-sm;
+    }
+}
+.top-line__contacts{
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .4em;
+    color: rgba(#fff, .5);
+    display: flex;
+    align-items: center;
+
+}
+.top-line__separator{
+    width: 1px;
+    height: 30px;
+    background-color:rgba(#fff, $border-opacity*1.5);
+    margin: 0 20px;
+}
+.top-line__numbers,
+.top-line__text{
+    font-family: roboto-vh, sans-serif;
+    margin-left: 7px;
+    a {
+        color:$accent;
+
+    }
+
+}
+.top-line__numbers{
+    color: $accent;
+}
+.top-line__text{
+    color: rgba(#fff, .75);
+}
+//ASIDE
+.home-header__content{
+    height: 100%;
+}
+.home-aside{
+    background-color: $dark;
+    width: $size;
+    height: 100%;
+    position: absolute;
+    top:0; //при абсолютном позиционировании, чтобы занимал всю высоту с 0,и отступим вниз сверзу с помощью padding-top на размер 70 пикселей
+    padding-top:$size ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5; //нужен для абсолютных элементов, для определения приоритетов(как я поняла)
+    @include media-breakpoint-down(md){
+        width: $size-sm;
+        padding-top:$size-sm ;
+    }
+}
+.home-aside__decoration{
+  flex:1 0 0;  
+  background-image: url(../images/dist/decoration.svg); 
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: center;
+  @include media-breakpoint-down(sm){
+    display: none;
+    
+}
+}
+.home-aside__soc{
+  flex:1 0 0 ;  
+  @include media-breakpoint-down(sm){
+   margin-top: 40px;
+    
+}
+}
+.home-aside__share-icon{
+    background-color: $accent;
+    width: $size;
+    flex: 0 0 $size;
+    background-image: url(../images/dist/share-solid.svg);
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include media-breakpoint-down(md){
+        width: $size-sm;
+        flex: 0 0 $size-sm;
+    }
+
+    
+}
+.soc-item{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(#fff, $border-opacity);//рамки
+    margin-top: -1px;//накладывались бордюры ,сдвинули вниз
+    transition: background .5s ease-out;//анимация, медленное проявление 
+    border-bottom: 1px solid transparent;//накладываются цвета, уберем непрозрачность, но у нижнего элемента нет нижнего бордюра
+    &:last-child{//обращение к последнему элементу через псевдокласс
+        border-bottom: 1px solid rgba(#fff, $border-opacity);
+    }
+    img{
+        width: 15px;
+        height: auto;
+        max-height: 15px;
+        opacity: .3;
+        transition: opasity .5s ease-out;//анимация орасити изображения
+    }
+    &:hover{//псевдокласс при наведении
+       background-color: $accent;  
+       img{//обращение к картинке при наведении
+        opacity: 1;
+       }
+
+    }
+
+}
+//slider
+.slider-container{
+    padding-left: $size;//отступ слева на размер полосы меню-бара
+    width: 100%;//размеры на весь экран
+    height: 100%;
+    overflow: hidden;//Свойство overflow управляет тем, как ведёт себя содержимое блочного элемента, если его размер превышает допустимую длину/ширину.Если не ставить overflow явно или поставить visible, то содержимое отображается за границами блока.hidden-Вылезающее за границу содержимое становится недоступно.auto-При переполнении отображается полоса прокрутки.scroll-Полоса прокрутки отображается всегда.
+    position: relative;//задаем для других элементов как точку отсчета для абсолютного позиционирования
+    @include media-breakpoint-down(md){
+        padding-left: $size-sm;
+    }
+
+
+}
+.slider-bottom{
+    position: absolute;//чтобы не исчезал
+    bottom: 0;//отступ снизу, прижмем книзу
+    display: flex;
+    z-index: 5;
+    align-items: center;
+    left: $size;//чтобы не уехал за сайт-бар 
+    height: $size;
+    
+    width: calc(75% - #{$size});//интерполяция, расчет пространства которое будет занимать картинка с машинками 75%- ширина меню-бара
+    @include media-breakpoint-down(md){
+        left: $size-sm;//чтобы не уехал за сайт-бар 
+        height: $size-sm;
+        
+        width: 100%;
+    }
+}
+.slider-share{
+    flex: 0 1 auto;//чтобы можно было добавлять элементы
+
+}
+// .slider-scrollbar{//резиновый элемент
+//     flex:1 0 0;
+
+// }
+
+// .slider-navigation{//новигация будет фиксированной
+//     flex:0 0 140px;
+// }
+.slider-share_items{
+display: flex;
+position: relative;
+bottom: -.5px;
+
+}
+.slider-share__item{
+    width: $size;
+    height: $size;
+    bottom: none;
+    background-color: $dark;
+    border-right: 1px solid rgba(#fff, $border-opacity);
+    margin-left: -.5px;
+    &:last-child{
+        border: none;//убираем у последнего элемента бордюр
+        &::after{//добавим оранжевый бордюр с помощью псевдокласса
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background-color: $accent;
+        
+        }
+
+    }
+    @include media-breakpoint-down(md){
+        width: $size-sm;
+        height: $size-sm;
+    }
+
+}
+.slider-img{
+    height: 100%;
+    width: 75%;//ширина картинки в блоке
+    overflow: hidden;
+    position: relative;
+    &::before{ //затемнение картинки при помощи псевдокласса
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color:rgba(#000, .45) ;
+        z-index: 2;
+
+    }
+    @include media-breakpoint-down(md){
+        width: 100%;//задний фон на всю ширину при маленьких разрешениях
+    }
+
+}
+.slider-img__slide{
+    height: 100%;
+    overflow: hidden;
+}
+.slider-img__bg{
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.slider-text{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: calc(100% - #{$size});
+    @include media-breakpoint-down(md){
+        height: calc(100% - #{$size-sm}); 
+    }
+}
+.slider-text__slide{
+    display: flex;
+    justify-content: center;
+    flex-direction: column; //выстраивание текстовых элементов в колонку
+}
+.slider-text__content{
+   text-align: right;
+   padding-right: 19%; //поменяла сама с 22%
+   @include media-breakpoint-down(md){
+    margin: 0 20px;//сама 
+    
+}
+    
+}
+
+.slider-text__heading{
+    text-transform: uppercase;
+    font-size:60px ;
+    line-height: 120%;
+    font-family: oswald-vh, sans-serif;
+    max-width: 780px;
+    float: right;//разместить справа!!!
+    span{
+        color: $accent;
+        white-space: nowrap;//отключен перенос текста
+    }
+    @include media-breakpoint-down(lg){
+        font-size: 50px;
+        min-width: 500px;
+    }
+    @include media-breakpoint-down(md){
+        font-size: 35px;
+        
+    }
+    @include media-breakpoint-down(sm){
+        font-size: 20px;
+        white-space:pre-line;//перенос строк разрешен
+        min-width: 250px;// добавила сама для маленьких разрешений, чтобы текст не заезжал друг на друга
+        
+    }
+
+}
+.slider-text__desc{
+    float: right;
+    max-width: 500px;
+    font-size:13px ;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    clear: both;// при изменении масштабов страницы чтобы не съезжало в другое место 
+    @include media-breakpoint-down(md){
+        font-size: 12px;
+        
+    }
+
+
+}
+.slider-text__button{
+    float: right;
+    clear: both;
+}
+
+.slider-pagination{//пагинация будет фиксированной
+    flex:0 0 140px;//для фиксации
+    display: flex;
+    justify-content: center;
+    height: $size;
+    align-items: center;
+    position: relative; //добавила чтобы центровать внутрь флексбокса!!!!
+    .swiper-pagination {
+		bottom: auto;
+	}
+    .swiper-pagination-bullet{
+      width: 6px;
+      height: 6px;
+      opacity: 1;  
+      background-color: #fff;
+      margin: 0 7.5px;
+    }
+    .swiper-pagination-bullet-active{
+        background-color: $accent;
+        position: relative;
+        &::before{
+            content: '';
+            width: 14px;
+            height: 14px;
+            border: 1px solid $accent;
+            position: absolute;
+            border-radius: 100%;
+            left: -4px;
+            top: -4px;
+        
+        }
+    }
+    @include media-breakpoint-down(md){
+        height: $size-sm;
+        display: none;
+    }
+
+}
+.slider-scrollbar{//резиновый элемент
+    flex:1 0 0;
+    position: relative;//добавила чтобы центровать внутрь флексбокса!!!!
+    .swiper-scrollbar{
+        height: 1px;
+        background-color: rgba(#fff, .2) ;
+        
+        
+    }
+    .swiper-scrollbar-drag{//берем название из инспекта, открывает до класса, который меняет значения при скроле
+       height: 3px;
+       background-color: $accent;
+       top:-1px;
+
+
+    }
+    @include media-breakpoint-down(md){
+        display: none;
+    }
+
+}
+.slider-navigation__container{// создали отделтный контейнер, для органичения размеров бокса для кнопок
+    max-width: 70px;
+    position: relative;
+    margin: auto; //чтобы элементы центрировались
+}
+.slider-navigation{//новигация будет фиксированной
+    flex:0 0 140px;
+    position: relative;
+    left: 10px;
+    .swiper-button-prev, .swiper-button-next{
+    width: 32px;
+    height: 32px;
+    color: $accent;
+    background-color: #3c3c3c;
+    border-radius: 100%;
+    border: 2px solid $accent;
+    top: 5px;
+    &::after {//открываем в инспекте класс указателя и смотрим через какой псевдоэлемент он работает, в нашем случае after
+        font-size: 10px;
+    }
+    &.swiper-button-disabled{//находим в инспекте название класса при неактивной фазе, с помощью &  добавляем класс в стилизацию
+        opacity: 1;
+        color: #8a8a8a;
+        border-color: #8a8a8a;
+
+     }
+    
+ }
+.swiper-button-prev{
+    left: 0;
+
+    }
+
+.swiper-button-next{
+    right: 0;
+}
+@include media-breakpoint-down(md){
+    left:-20px;
+
+    
+}
+}
+.slider-gear{
+    width: 470px;
+    height: 470px;
+    position: absolute;
+    background-image: url(../images/dist/gear.svg);
+    background-size: cover;
+    background-position: center;
+    top: 50%;
+    margin-top: -270px;
+    z-index: 2;
+    right: calc(23.8% - 235px);//для фиксации колеса на одном месте при изменении размера
+    @include media-breakpoint-down(md){
+        font-size: 35px;
+        display: none;
+        
+    }
+
+}
+.slider-pagination-count{
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    z-index: 100;
+    width: 120px;
+    height: 80px;
+    
+    font-family: oswald-vh, sans-serif ;
+    font-weight: 500;
+    font-size: 24px;
+    .current{
+        color: $accent;
+        font-size: 40px;
+        display: inline-block;
+        min-width: 42px;//задаем минимальную ширину чтобы не сдвигалось при анимации
+
+
+    }
+    @include media-breakpoint-down(xl){
+        top: 0;
+        right: 0;
+        transform: scale(.8);//уменьшает в 2 раза , чтобы не прописывать уменьшение размера всех элементов
+        
+    }
+    @include media-breakpoint-down(lg){
+        top: 0;
+        right: 0;
+        transform: scale(.7);//уменьшает в 2 раза , чтобы не прописывать уменьшение размера всех элементов
+        padding-left: 20px;
+        
+    }
+    @include media-breakpoint-down(md){
+        display: none;
+        
+    }
+
+}
+.slider-pagination-current{
+    right: 40px;
+    bottom: 10px;
+    position: absolute;
+    font-size: 100px;
+    font-family: oswald-vh, sans-serif;
+    color: $deep;
+    -webkit-text-stroke: 1px #7f7f7f ; // бордюры цифры
+    &__dot{//конкатенация
+        color: $accent;
+        -webkit-text-stroke: 1px transparent ;//по моему запонтяет внутри
+
+    }
+    @include media-breakpoint-down(xl){
+        font-size: 70px;
+        
+    }
+    @include media-breakpoint-down(lg){
+        font-size: 50px;
+        bottom: 0;
+        right: 20px;
+        
+    }
+
+    @include media-breakpoint-down(md){
+        display: none;
+        
+    }
+
+ }
